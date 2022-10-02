@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Remove 'run ci' label if needed
         uses: actions/github-script@v3
-        if: contains( github.event.pull_request.labels.*.name, 'run ci')
+        if: always() && contains(github.event.pull_request.labels.*.name, 'run ci')
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
